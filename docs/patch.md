@@ -54,14 +54,14 @@ The `set` method has the following signature:
 patch.set(path: string, value: JsonValue): Patch
 ```
 
-The return is the path instance itself to allow operation chaining.
+The return is the `Patch` instance itself to allow operation chaining.
 
 #### Code Sample
 
 Here's a minimal example showing how to set a value:
 
 ```js
-patch.set('custom.pet', 'crocodile');
+patch.set('custom.pet', 'crocodile'): this;
 ```
 
 ### unset
@@ -81,7 +81,7 @@ The `unset` method has the following signature:
 patch.unset(path: string): this
 ```
 
-The return is the path instance itself to allow operation chaining.
+The return is the `Patch` instance itself to allow operation chaining.
 
 #### Code Sample
 
@@ -114,7 +114,7 @@ The `clear` method has the following signature:
 patch.clear(): this
 ```
 
-The return is the path instance itself to allow operation chaining.
+The return is the `Patch` instance itself to allow operation chaining.
 
 #### Code Sample
 
@@ -146,7 +146,7 @@ The `remove` method has the following signature:
 patch.remove(path: string, value: JsonValue): this
 ```
 
-The return is the path instance itself to allow operation chaining.
+The return is the `Patch` instance itself to allow operation chaining.
 
 #### Code Sample
 
@@ -179,7 +179,7 @@ The `add` method has the following signature:
 patch.add(path: string, element: JsonValue): this
 ```
 
-The return is the path instance itself to allow operation chaining.
+The return is the `Patch` instance itself to allow operation chaining.
 
 #### Code Sample
 
@@ -217,7 +217,7 @@ The `combine` method has the following signature:
 patch.combine(path: string, value: JsonValue): this
 ```
 
-The return is the path instance itself to allow operation chaining.
+The return is the `Patch` instance itself to allow operation chaining.
 
 #### Code Sample
 
@@ -253,7 +253,7 @@ The `combine` method has the following signature:
 patch.combine(path: string, value: JsonArray | JsonMap): this
 ```
 
-The return is the path instance itself to allow operation chaining.
+The return is the `Patch` instance itself to allow operation chaining.
 
 #### Code Sample
 
@@ -283,7 +283,7 @@ The `increment` method has the following signature:
 patch.increment(path: string, value: number = 1): this
 ```
 
-The return is the path instance itself to allow operation chaining.
+The return is the `Patch` instance itself to allow operation chaining.
 
 #### Code Sample
 
@@ -313,7 +313,7 @@ The `increment` method has the following signature:
 patch.decrement(path: string, value: number = 1): this
 ```
 
-The return is the path instance itself to allow operation chaining.
+The return is the `Patch` instance itself to allow operation chaining.
 
 #### Code Sample
 
