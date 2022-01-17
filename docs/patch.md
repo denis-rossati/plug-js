@@ -1,9 +1,9 @@
 # Patch
 
-Patches allow you to modify a particular entity, such as user profiles or session attributes, without knowing 
+Patches allow you to modify a particular entity, such as user profiles or session attributes, without knowing
 its current state.
 
-Most operations require specifying the path to the target attribute. The path format is similar to the way you are 
+Most operations require specifying the path to the target attribute. The path format is similar to the way you are
 already used to access nested structures in JavaScript.
 
 For objects and maps, you should use the `object.property` notation:
@@ -18,7 +18,7 @@ For lists, you should use the `list[index]` notation:
 patch.set('custom.pets[0]', 'crocodile');
 ```
 
-Notice that the processing performed by a patch is atomic to prevent entities from ending up in an inconsistent state. 
+Notice that the processing performed by a patch is atomic to prevent entities from ending up in an inconsistent state.
 So either all operations are applied, or none of them are.
 
 ## API Reference
@@ -42,8 +42,8 @@ This reference documents all methods available in the Patch API and explains in 
 
 This method sets a value at a given path.
 
-This operation will overwrite the value in the specified path. Note that this operation will fail if the 
-parent path does not exist or is not a list or map. For example, given the path `foo.bar`, if the value at `foo` 
+This operation will overwrite the value in the specified path. Note that this operation will fail if the
+parent path does not exist or is not a list or map. For example, given the path `foo.bar`, if the value at `foo`
 does not exist or is not a map, the operation will fail.
 
 #### Signature
@@ -147,7 +147,7 @@ Current Value     | Given Value     | Result
 `null`            | `{a: 1}`        | `{a: 1}`
 `{}`              | `{a: 1}`        | `{a: 1}`
 `{a: 1}`          | `{b: 2}`        | `{a: 1, b: 2}`
-`{} `             | `{}`            | `{}`
+`{}`              | `{}`            | `{}`
 `null`            | `[1]`           | `[1]`
 `1`               | `[2]`           | `[1, 2]`
 `[]`              | `[1]`           | `[1]`
@@ -300,7 +300,7 @@ patch.clear('custom.pets');
 
 This method deletes a given path.
 
-The difference between `unset` and `clear` is that `unset` deletes the path, 
+The difference between `unset` and `clear` is that `unset` deletes the path,
 while `clear` removes the value by setting it to null or removing all its elements.
 
 Note that the operation will not fail if the path does not exist.
@@ -327,7 +327,7 @@ patch.unset('custom.pets');
 
 This method builds the patch and emits an event to record the specified changes.
 
-Notice that the processing performed by a patch is atomic to prevent entities from ending up in an inconsistent state. 
+Notice that the processing performed by a patch is atomic to prevent entities from ending up in an inconsistent state.
 So either all operations are applied, or none of them are.
 
 #### Signature
@@ -338,7 +338,7 @@ The `save` method has the following signature:
 patch.save(): Promise<Event>
 ```
 
-The return is a [Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise) that 
+The return is a [Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise) that
 resolves to the tracked event after successful transmission.
 
 #### Code Sample
