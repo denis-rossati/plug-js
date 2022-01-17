@@ -28,13 +28,14 @@ This reference documents all methods available in the Patch API and explains in 
 ### Index
 
 - [set](#set)
-- [unset](#unset)
-- [clear](#clear)
 - [add](#add)
 - [combine](#combine)
 - [merge](#merge)
 - [increment](#increment)
 - [decrement](#decrement)
+- [remove](#remove)
+- [clear](#clear)
+- [unset](#unset)
 - [save](#save)
 
 ### set
@@ -125,35 +126,34 @@ patch.clear('custom.pets');
 
 ### remove
 
-This method removes all values that match in a collection.
+This method removes values from a collection.
 
 The following table shows how the operation behaves in different scenarios:
 
-Current Value                     | Given Value       | Result
-----------------------------------|-------------------|-------------------
-`['a', 'b', 'c']`                 | `'a'`             | `['b', 'c']`
-`['a', 'b', 'c', 'c']`            | `'c'`             | `['a', 'b']`
-`['a', 'b', 'c']`                 | `'d'`               | `['a', 'b', 'c']`
-`[]`                              | `'foo'`           | `[]`
-`['foo', {'qux': 'quux'}, 'bar']` | `{'qux': 'quux'}` | `['foo', 'bar']`
-
+Current Value          | Given Value | Result
+-----------------------|------------ |-------------------
+`['a', 'b', 'c']`      | `'a'`       | `['b', 'c']`
+`['a', 'b', 'c', 'c']` | `'c'`       | `['a', 'b']`
+`['a', 'b', 'c']`      | `'d'`       | `['a', 'b', 'c']`
+`[]`                   | `'foo'`     | `[]`
+`['a', {'b': 1}, 'c']` | `{'b': 1}`  | `['a', 'c']`
 
 #### Signature
 
 The `remove` method has the following signature:
 
 ```ts
-patch.remove(path: string, value: JsonValue)
+patch.remove(path: string, value: JsonValue): this
 ```
 
 The return is the path instance itself to allow operation chaining.
 
 #### Code Sample
 
-Here's a minimal example showing how to remove a value from a collection
+Here's a minimal example showing how to remove a value from a collection:
 
 ```js
-patch.remove('custom.code', 'bugs')
+patch.remove('custom.pets', 'crocodile');
 ```
 
 ### add
