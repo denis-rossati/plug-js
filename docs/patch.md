@@ -64,98 +64,6 @@ Here's a minimal example showing how to set a value:
 patch.set('custom.pet', 'crocodile'): this;
 ```
 
-### unset
-
-This method deletes a given path.
-
-The difference between `unset` and `clear` is that `unset` deletes the path, 
-while `clear` removes the value by setting it to null or removing all its elements.
-
-Note that the operation will not fail if the path does not exist.
-
-#### Signature
-
-The `unset` method has the following signature:
-
-```ts
-patch.unset(path: string): this
-```
-
-The return is the `Patch` instance itself to allow operation chaining.
-
-#### Code Sample
-
-Here's a minimal example showing how to unset a value:
-
-```js
-patch.unset('custom.pets');
-```
-
-### clear
-
-This method clears the value at given path.
-
-The following table shows how the operation behaves in different scenarios:
-
-Current Value     | Result
-------------------|-------------
-`null`            | `null`
-`[]`              | `[]`
-`['a']`           | `[]`
-`'foo'`           | `null`
-
-Note that the operation will not fail if the path does not exist.
-
-#### Signature
-
-The `clear` method has the following signature:
-
-```ts
-patch.clear(): this
-```
-
-The return is the `Patch` instance itself to allow operation chaining.
-
-#### Code Sample
-
-Here's a minimal example showing how to clear a given path:
-
-```js
-patch.clear('custom.pets');
-```
-
-### remove
-
-This method removes values from a collection.
-
-The following table shows how the operation behaves in different scenarios:
-
-Current Value          | Given Value | Result
------------------------|------------ |-------------------
-`['a', 'b', 'c']`      | `'a'`       | `['b', 'c']`
-`['a', 'b', 'c', 'c']` | `'c'`       | `['a', 'b']`
-`['a', 'b', 'c']`      | `'d'`       | `['a', 'b', 'c']`
-`[]`                   | `'foo'`     | `[]`
-`['a', {'b': 1}, 'c']` | `{'b': 1}`  | `['a', 'c']`
-
-#### Signature
-
-The `remove` method has the following signature:
-
-```ts
-patch.remove(path: string, value: JsonValue): this
-```
-
-The return is the `Patch` instance itself to allow operation chaining.
-
-#### Code Sample
-
-Here's a minimal example showing how to remove a value from a collection:
-
-```js
-patch.remove('custom.pets', 'crocodile');
-```
-
 ### add
 
 This method adds a value to a collection.
@@ -321,6 +229,98 @@ Here's a minimal example showing how to decrement a value:
 
 ```js
 patch.decrement('custom.score', 10);
+```
+
+### remove
+
+This method removes values from a collection.
+
+The following table shows how the operation behaves in different scenarios:
+
+Current Value          | Given Value | Result
+-----------------------|------------ |-------------------
+`['a', 'b', 'c']`      | `'a'`       | `['b', 'c']`
+`['a', 'b', 'c', 'c']` | `'c'`       | `['a', 'b']`
+`['a', 'b', 'c']`      | `'d'`       | `['a', 'b', 'c']`
+`[]`                   | `'foo'`     | `[]`
+`['a', {'b': 1}, 'c']` | `{'b': 1}`  | `['a', 'c']`
+
+#### Signature
+
+The `remove` method has the following signature:
+
+```ts
+patch.remove(path: string, value: JsonValue): this
+```
+
+The return is the `Patch` instance itself to allow operation chaining.
+
+#### Code Sample
+
+Here's a minimal example showing how to remove a value from a collection:
+
+```js
+patch.remove('custom.pets', 'crocodile');
+```
+
+### clear
+
+This method clears the value at given path.
+
+The following table shows how the operation behaves in different scenarios:
+
+Current Value     | Result
+------------------|-------------
+`null`            | `null`
+`[]`              | `[]`
+`['a']`           | `[]`
+`'foo'`           | `null`
+
+Note that the operation will not fail if the path does not exist.
+
+#### Signature
+
+The `clear` method has the following signature:
+
+```ts
+patch.clear(): this
+```
+
+The return is the `Patch` instance itself to allow operation chaining.
+
+#### Code Sample
+
+Here's a minimal example showing how to clear a given path:
+
+```js
+patch.clear('custom.pets');
+```
+
+### unset
+
+This method deletes a given path.
+
+The difference between `unset` and `clear` is that `unset` deletes the path, 
+while `clear` removes the value by setting it to null or removing all its elements.
+
+Note that the operation will not fail if the path does not exist.
+
+#### Signature
+
+The `unset` method has the following signature:
+
+```ts
+patch.unset(path: string): this
+```
+
+The return is the `Patch` instance itself to allow operation chaining.
+
+#### Code Sample
+
+Here's a minimal example showing how to unset a value:
+
+```js
+patch.unset('custom.pets');
 ```
 
 ### save
