@@ -19,7 +19,7 @@ import {CDN_URL} from './constants';
 import {factory as playgroundPluginFactory} from './playground';
 import {EapFeatures} from './eap';
 import {SlotId, FetchResponse, FetchOptions} from './fetch';
-import {NullableJsonObject, JsonValue} from './sdk/json';
+import {JsonObject, JsonValue} from './sdk/json';
 
 export interface PluginConfigurations {
     [key: string]: any;
@@ -336,7 +336,7 @@ export class GlobalPlug implements Plug {
     /**
      * This API is unstable and subject to change in future releases.
      */
-    public fetch<P extends NullableJsonObject, I extends SlotId = SlotId>(
+    public fetch<P extends JsonObject, I extends SlotId = SlotId>(
         slotId: I,
         options: FetchOptions = {},
     ): Promise<FetchResponse<I, P>> {
